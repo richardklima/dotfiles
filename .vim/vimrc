@@ -1,0 +1,231 @@
+"" according to " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
+
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Yggdroot/indentLine'
+"Plugin 'sickill/vim-monokai'
+"Plugin 'crusoexia/vim-monokai'
+"latex plugin
+Plugin 'lervag/vimtex'
+" colorschemes
+Plugin 'flazz/vim-colorschemes'
+
+" find an alternative (latex-box? Automatic Latex Plugin?)
+"Plugin 'http://git.code.sf.net/p/vim-latex/vim-latex'
+"Plugin 'jnurmine/Zenburn'
+"Plugin 'altercation/vim-colors-solarized'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"mapping the leader key
+let mapleader = "\<Space>"
+noremap <Leader>s :update!<CR>
+noremap <Leader>r :!python %<CR>
+
+set splitbelow
+set splitright
+
+nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+map <leader>H              :wincmd H<cr>
+map <leader>K              :wincmd K<cr>
+map <leader>L              :wincmd L<cr>
+map <leader>J              :wincmd J<cr>
+"nnoremap <C-,> <C-W><C-+>
+"nnoremap <C-.> <C-W><C-->
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+set formatoptions-=t
+"set wrap linebreak nolist
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+"    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+
+"highlight BadWhitespace ctermbg=red guibg=darkred
+
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+set encoding=utf-8
+
+let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let python_highlight_all=1
+syntax on
+
+" colorscheme {{{1
+syntax on
+colorscheme molokai
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" line numbers
+set nu
+set nocompatible
+" format
+"set backup
+"set smartindent
+set showmatch
+set title
+" support 256 colors in Lion terminal 
+set t_Co=256
+" always show file name
+set modeline
+set ls=2
+" colorscheme
+"colorscheme monokai
+
+"vnoremap <silent> ` :s#^#\##<cr>:noh<cr>
+"vnoremap <silent> ~ :s#^\###<cr>:noh<cr>
+"
+"commenting in Python
+noremap <silent><Leader>` :s#^#\##<cr>:noh<cr>
+noremap <silent><Leader>~ :s#^\###<cr>:noh<cr>
+" map each number to its shift-key character
+noremap 1 !
+noremap 2 @
+noremap 3 #
+noremap 4 $
+noremap 5 %
+noremap 6 ^
+noremap 7 &
+noremap 8 *
+noremap 9 (
+noremap 0 )
+"inoremap - _
+" and then the opposite
+noremap ! 1
+noremap @ 2
+noremap # 3
+noremap $ 4
+noremap % 5
+noremap ^ 6
+noremap & 7
+noremap * 8
+noremap ( 9
+noremap ) 0
+"inoremap _ -
+
+" display the number of matches for the last search
+"nmap <Leader># :%s:<C-R>/::gn<CR>
+"
+"xterm mouse with middleclick paste
+nnoremap <MiddleMouse> i<MiddleMouse>
+vnoremap <MiddleMouse> s<MiddleMouse>
+
+"add line without changing position or leaving mode
+noremap <silent> <Leader>o :set paste<CR>m`o<ESC>``:set nopaste<CR>
+noremap <silent> <Leader>O :set paste<CR>m`O<ESC>``:set nopaste<CR>
+
+autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
+function! s:def_base_syntax()
+" Simple example
+  	syntax match commonOperator "\(+\|=\|<=\|>=\|!=\|-\|\^\|\*\)"
+	syntax match baseDelimiter ","
+	hi link commonOperator Operator
+	hi link baseDelimiter Special
+endfunction
+
+" vim-latex {{{2
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+"
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+    let @/ = ''
+    if exists('#auto_highlight')
+        au! auto_highlight
+        augroup! auto_highlight
+        setl updatetime=4000
+        echo 'Highlight current word: off'
+        return 0
+    else
+        augroup auto_highlight
+            au!
+            au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+        augroup end
+        setl updatetime=500
+        echo 'Highlight current word: ON'
+        return 1
+    endif
+endfunction
+
+set cursorline
+
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=blue guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+
+
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) + 10)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) - 10)<CR>
+
+" Disable all blinking:
+":set guicursor+=a:blinkon0
+" Remove previous setting:
+":set guicursor-=a:blinkon0
+ " Restore default setting:
+":set guicursor&

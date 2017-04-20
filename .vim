@@ -1,1 +1,0 @@
-/home/rklima2/.vim
