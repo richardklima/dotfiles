@@ -122,3 +122,9 @@ runMultiProc() {
 }
 
 alias lsl='ls -l'
+alias lsa='ls -a'
+
+# git
+alias gita='git add -A'
+alias gitcm='git commit -m'
+alias gitpm='git push -u origin master'
