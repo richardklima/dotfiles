@@ -128,3 +128,10 @@ alias lsa='ls -a'
 alias gita='git add -A'
 alias gitcm='git commit -m'
 alias gitpm='git push -u origin master'
+
+#git function to add, commit, push
+gitAddCommitPush() {
+	git add -A
+	git commit -m "$1"
+	git push -u origin master
+}
