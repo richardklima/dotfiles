@@ -135,3 +135,9 @@ gitAddCommitPush() {
 	git commit -m "$1"
 	git push -u origin master
 }
+
+gitPush_dotfiles() {
+	git -C ~/git/dotfiles add -A
+	git -C ~/git/dotfiles commit -m "$1"
+	git -C ~/git/dotfiles push -u origin master
+}
