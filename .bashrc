@@ -141,3 +141,8 @@ gitPush_dotfiles() {
 	git -C ~/git/dotfiles commit -m "$1"
 	git -C ~/git/dotfiles push -u origin master
 }
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+TAB: menu-complete
