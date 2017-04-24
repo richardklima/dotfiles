@@ -143,4 +143,7 @@ gitPush_dotfiles() {
 }
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+set show-all-if-ambiguous on
+set completion-ignore-case on
+TAB: menu-complete
 
