@@ -1,0 +1,17 @@
+ music_directory "/myDisk/music"
+# music_directory "/home/pi/Music"
+# music_directory "/home/pi/Music/PI"  
+ playlist_directory "/home/pi/.mpd/playlists"   
+ db_file      "/home/pi/.mpd/mpd.db"  
+ log_file      "/home/pi/.mpd/mpd.log"  
+ pid_file      "/home/pi/.mpd/mpd.pid"  
+ state_file     "/home/pi/.mpd/mpdstate"  
+ audio_output {  
+     type  "alsa"  
+     name  "pulse audio"  
+ } 
+
+#bind_to_address   "127.0.0.1"
+bind_to_address "any"
+
+log_level "verbose"
