@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'Yggdroot/indentLine'
@@ -63,6 +64,11 @@ map <leader>L              :wincmd L<cr>
 map <leader>J              :wincmd J<cr>
 "nnoremap <C-,> <C-W><C-+>
 "nnoremap <C-.> <C-W><C-->
+
+"Autopep8 will ignore long lines and won't brake them
+let g:autopep8_ignore="E501"
+"let g:autopep8_ignore="E501,E266"
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -157,29 +163,29 @@ let g:NERDCustomDelimiters = {
   \ 'tex': {'left': '% ' }
   \ }
 
-" map each number to its shift-key character
-noremap 1 !
-noremap 2 @
-noremap 3 #
-noremap 4 $
-noremap 5 %
-noremap 6 ^
-noremap 7 &
-noremap 8 *
-noremap 9 (
-noremap 0 )
-"inoremap - _
-" and then the opposite
-noremap ! 1
-noremap @ 2
-noremap # 3
-noremap $ 4
-noremap % 5
-noremap ^ 6
-noremap & 7
-noremap * 8
-noremap ( 9
-noremap ) 0
+"" map each number to its shift-key character
+"noremap 1 !
+"noremap 2 @
+"noremap 3 #
+"noremap 4 $
+"noremap 5 %
+"noremap 6 ^
+"noremap 7 &
+"noremap 8 *
+"noremap 9 (
+"noremap 0 )
+""inoremap - _
+"" and then the opposite
+"noremap ! 1
+"noremap @ 2
+"noremap # 3
+"noremap $ 4
+"noremap % 5
+"noremap ^ 6
+"noremap & 7
+"noremap * 8
+"noremap ( 9
+"noremap ) 0
 "inoremap _ -
 
 " display the number of matches for the last search
