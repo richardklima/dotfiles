@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
@@ -35,10 +36,11 @@ Plugin 'flazz/vim-colorschemes'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
-
+execute pathogen#infect()
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+syntax on
 
 "mapping the leader key
 let mapleader = "\<Space>"
@@ -107,10 +109,10 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 let python_highlight_all=1
-syntax on
+"syntax on
 
 " colorscheme {{{1
-syntax on
+"syntax on
 colorscheme molokai
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -135,8 +137,26 @@ set ls=2
 "vnoremap <silent> ~ :s#^\###<cr>:noh<cr>
 "
 "commenting in Python
-noremap <silent><Leader>` :s#^#\##<cr>:noh<cr>
-noremap <silent><Leader>~ :s#^\###<cr>:noh<cr>
+"noremap <silent><Leader>` :s#^#\##<cr>:noh<cr>
+"noremap <silent><Leader>~ :s#^\###<cr>:noh<cr>
+
+"###############################################################################
+" NERDCommenter
+"###############################################################################
+
+map <silent> <Leader>cc <plug>NERDCommenterComment
+vmap <silent> <Leader>cc <plug>NERDCommenterAlignBoth
+vmap <silent> <Leader>cs <plug>NERDCommenterSexy
+vmap <silent> <Leader>cu <plug>NERDCommenterUncomment
+map <silent> <Leader>cu <plug>NERDCommenterUncomment
+let g:NERDCreateDefaultMappings = 0
+let g:NERDCustomDelimiters = {
+  \ 'pentadactyl': { 'left': '"' },
+  \ 'rtex': { 'left': '%' },
+  \ 'snippet': { 'left': '#' },
+  \ 'tex': {'left': '% ' }
+  \ }
+
 " map each number to its shift-key character
 noremap 1 !
 noremap 2 @
