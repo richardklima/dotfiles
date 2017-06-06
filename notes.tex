@@ -1,0 +1,23 @@
+%        File: notes.tex
+%     Created: Tue Jun 06 03:00 pm 2017 B
+% Last Change: Tue Jun 06 03:00 pm 2017 B
+%
+\documentclass[a4paper]{article}
+\title{Notes on using vim}
+\author{Richard Klima}
+\begin{document}
+\maketitle
+\section{PEP8 usage}
+To start pep8 checker - press F7 in vim\\
+You can set which error to ignore in $~/.ignore/flake8$\\
+Now we ignore too long lines - error E501
+
+\section{Autopep8 usage}
+To automaticaly change Python code in order to comply with PEP8 format, write in $VIM :Autopep8$\\
+You can also disable some changes of some erros like we did in our $.vimrc$ by adding let $g:autopep8\_ignore=''E501''$  
+
+% \section{Conclusion}
+% Today we learned a lot
+
+\end{document}
+

@@ -23,6 +23,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'Yggdroot/indentLine'
+Plugin 'vim-latex/vim-latex'
 "Plugin 'sickill/vim-monokai'
 "Plugin 'crusoexia/vim-monokai'
 "latex plugin
@@ -47,6 +48,7 @@ syntax on
 let mapleader = "\<Space>"
 noremap <Leader>s :update!<CR>
 noremap <Leader>r :!python %<CR>
+noremap <Leader>ll :!latexmk -C latexmk -pdf %<CR>
 
 set splitbelow
 set splitright
@@ -210,6 +212,7 @@ endfunction
 
 " vim-latex {{{2
 let g:tex_flavor='latex'
+let g:vimtex_compiler_latexmk = {'callback' : 0}
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 "
