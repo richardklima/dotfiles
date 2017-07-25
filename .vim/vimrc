@@ -217,6 +217,11 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 "disable math mapping - equations are shown as written in latex
 let g:tex_conceal = ""
+au FileType tex setlocal nocursorline
+let g:vimtex_motion_matchparen = 0
+autocmd FileType tex :NoMatchParen
+"autocmd FileType tex :NoMatchParen
+"let g:loaded_matchparen=1
 "
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
