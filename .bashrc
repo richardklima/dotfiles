@@ -118,7 +118,10 @@ alias eee2='ssh -A rklima@dh077058.eeng.liv.ac.uk' #jarrett
 alias eee3='ssh -A rklima@pc076011.eeng.liv.ac.uk' #tyner
 alias sl1='ssh -A rklima@smartlab-srv01.csc.liv.ac.uk' #smartlab server 1
 alias sl2='ssh -A rklima@smartlab-srv02.csc.liv.ac.uk' #smartlab server 2
-alias hpc1='ssh -l rxk48-kkr08 phase2.wonder.hartree.stfc.ac.uk' # Hartree HPC cluster
+
+hpc1() {
+	ssh -l $1 phase2.wonder.hartree.stfc.ac.uk
+}
 
 runMultiProc() {
 	nohup mpiexec -n $1 python $2 &
