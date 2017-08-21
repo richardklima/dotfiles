@@ -119,7 +119,7 @@ alias eee3='ssh -A rklima@pc076011.eeng.liv.ac.uk' #tyner
 alias sl1='ssh -A rklima@smartlab-srv01.csc.liv.ac.uk' #smartlab server 1
 alias sl2='ssh -A rklima@smartlab-srv02.csc.liv.ac.uk' #smartlab server 2
 
-hpc1() {
+hpcA() {
 	ssh -l $1 phase2.wonder.hartree.stfc.ac.uk
 }
 
