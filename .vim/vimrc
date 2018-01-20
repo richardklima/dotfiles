@@ -265,3 +265,4 @@ nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) - 10)<CR>
 ":set guicursor-=a:blinkon0
  " Restore default setting:
 ":set guicursor&
+set backspace=indent,eol,start
